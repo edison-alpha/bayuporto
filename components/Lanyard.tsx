@@ -84,12 +84,12 @@ export default function Lanyard({
 }
 
 function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: { maxSpeed?: number; minSpeed?: number; isMobile?: boolean }) {
-  const band = useRef<any>();
-  const fixed = useRef<any>();
-  const j1 = useRef<any>();
-  const j2 = useRef<any>();
-  const j3 = useRef<any>();
-  const card = useRef<any>();
+  const band = useRef<any>(null);
+  const fixed = useRef<any>(null);
+  const j1 = useRef<any>(null);
+  const j2 = useRef<any>(null);
+  const j3 = useRef<any>(null);
+  const card = useRef<any>(null);
 
   const vec = new THREE.Vector3();
   const ang = new THREE.Vector3();
@@ -119,9 +119,13 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: { maxSpeed?: nu
   const [dragged, drag] = useState<any>(false);
   const [hovered, hover] = useState(false);
 
+  // @ts-ignore - rapier types issue
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  // @ts-ignore - rapier types issue
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  // @ts-ignore - rapier types issue
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  // @ts-ignore - rapier types issue
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.45, 0]

@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import bayuimg from '@/bayuimg.png';
+
+const bayuimg = '/bayuimg.png';
 
 interface HeroProps {
   onMenuToggle?: () => void;
