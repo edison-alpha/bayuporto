@@ -7,7 +7,6 @@ import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
 import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import WorkPage from './components/WorkPage';
@@ -79,7 +78,6 @@ const App: React.FC = () => {
           window.scrollTo(0,0);
         }} />
         <Footer />
-        <AIAssistant />
       </div>
     );
   }
@@ -104,7 +102,6 @@ const App: React.FC = () => {
           }}
         />
         <Footer />
-        <AIAssistant />
       </div>
     );
   }
@@ -126,7 +123,6 @@ const App: React.FC = () => {
           onNavigateProject={(id) => setActiveProjectId(id)}
         />
         <Footer />
-        <AIAssistant />
       </div>
     );
   }
@@ -181,9 +177,6 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-      
-      {/* Gemini AI Assistant */}
-      <AIAssistant />
     </div>
   );
 };
