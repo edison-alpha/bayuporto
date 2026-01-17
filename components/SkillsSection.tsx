@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SKILL_GROUPS, STATS } from '../constants';
+import ResumeModal from './ResumeModal';
 
 const TOOLS = [
   { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -24,6 +25,8 @@ const TOOLS = [
 ];
 
 const SkillsSection: React.FC = () => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
@@ -52,7 +55,10 @@ const SkillsSection: React.FC = () => {
           <p className="text-white/60 text-xl leading-relaxed mb-8">
             I thrive on solving real-world problems, turning ideas into clean, maintainable code, and learning through experimentation. You'll find me building side projects, diving into new tech stacks, or simply exploring what's next in the world of web development.
           </p>
-          <button className="bg-blue-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform w-fit">
+          <button 
+            onClick={() => setIsResumeOpen(true)}
+            className="bg-blue-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform w-fit"
+          >
             My Resume
           </button>
         </div>
@@ -86,6 +92,8 @@ const SkillsSection: React.FC = () => {
           </div>
         ))}
       </div>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 };

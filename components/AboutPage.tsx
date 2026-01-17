@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { EXPERIENCES, TESTIMONIALS } from '../constants';
+import ResumeModal from './ResumeModal';
 
 interface AboutPageProps {
   onBack: () => void;
@@ -14,6 +15,7 @@ const ROLES = [
 
 const AboutPage: React.FC<AboutPageProps> = ({ onBack }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,7 +77,10 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack }) => {
          <p className="text-white/40 text-sm md:text-base leading-relaxed mb-12">
             I thrive on solving real-world problems, turning ideas into clean, maintainable code, and learning through experimentation. You'll find me building Web3 projects, diving into blockchain tech stacks, or exploring decentralized applications.
          </p>
-         <button className="bg-blue-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform">
+         <button 
+           onClick={() => setIsResumeOpen(true)}
+           className="bg-blue-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform"
+         >
            My Resume
          </button>
       </section>
@@ -200,6 +205,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack }) => {
             </div>
          </div>
       </section>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </div>
   );
 };
